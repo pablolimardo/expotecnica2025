@@ -946,7 +946,6 @@
 
     <!-- SCRIPTS -->
     <script>
-        import { inject } from "@vercel/analytics"
         // Scroll suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1056,7 +1055,10 @@
                 });
             });
         }
+          window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); }
+
     </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 
 </body>
 </html>
