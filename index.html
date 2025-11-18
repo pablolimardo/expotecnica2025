@@ -150,20 +150,16 @@
                 <h3 class="text-2xl md:text-3xl font-bold mb-6">La Expo Técnica comienza en:</h3>
                 <div id="countdown" class="flex flex-wrap justify-center gap-4 md:gap-8">
                     <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 min-w-[100px] border border-white/20">
-                        <div id="days" class="text-4xl md:text-5xl font-bold mb-2">00</div>
-                        <div class="text-sm uppercase tracking-wider">Días</div>
-                    </div>
-                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 min-w-[100px] border border-white/20">
                         <div id="hours" class="text-4xl md:text-5xl font-bold mb-2">00</div>
                         <div class="text-sm uppercase tracking-wider">Horas</div>
                     </div>
                     <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 min-w-[100px] border border-white/20">
                         <div id="minutes" class="text-4xl md:text-5xl font-bold mb-2">00</div>
-                        <div class="text-sm uppercase tracking-wider">Min</div>
+                        <div class="text-sm uppercase tracking-wider">Minutos</div>
                     </div>
                     <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 min-w-[100px] border border-white/20">
                         <div id="seconds" class="text-4xl md:text-5xl font-bold mb-2">00</div>
-                        <div class="text-sm uppercase tracking-wider">Seg</div>
+                        <div class="text-sm uppercase tracking-wider">Segundos</div>
                     </div>
                 </div>
             </div>
@@ -171,20 +167,32 @@
     </section>
 
     <!-- HERO -->
-    <section id="inicio" class="py-20 bg-gradient-to-br from-blue-50 via-white to-teal-50">
-        <div class="container mx-auto px-4">
+    <section id="inicio" class="py-32 relative overflow-hidden min-h-[600px] flex items-center" data-parallax>
+        <!-- Imagen de fondo con efecto parallax -->
+        <div class="parallax-bg absolute inset-0 z-0">
+            <img
+                src="./img/indu9.webp"
+                alt="Escuela Industrial N°9"
+                class="w-full h-full object-cover"
+                style="transform: translateY(0px);"
+            >
+            <!-- Overlay semi-transparente para mejor legibilidad -->
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-900/85 via-purple-900/80 to-teal-900/85"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
             <div class="text-center max-w-4xl mx-auto reveal">
-                <h2 class="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-blue-900 via-purple-800 to-teal-700 bg-clip-text text-transparent leading-tight">
+                <h2 class="text-5xl md:text-7xl font-black mb-6 text-white leading-tight drop-shadow-2xl">
                     Expo Técnica 2025
                 </h2>
-                <p class="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
+                <p class="text-xl md:text-2xl text-white/95 mb-8 leading-relaxed drop-shadow-lg">
                     Descubrí la innovación, creatividad y talento de nuestros estudiantes
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#especialidades" class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                    <a href="#especialidades" class="bg-white text-blue-900 px-8 py-4 rounded-xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
                         Explorá las Especialidades
                     </a>
-                    <a href="#proyectos" class="bg-white text-blue-700 border-2 border-blue-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all duration-300">
+                    <a href="#proyectos" class="bg-transparent text-white border-2 border-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all duration-300 backdrop-blur-sm">
                         Ver Proyectos
                     </a>
                 </div>
@@ -213,11 +221,11 @@
                         <div class="space-y-3">
                             <div class="bg-white rounded-xl p-4">
                                 <div class="font-bold text-blue-600">19 de Noviembre</div>
-                                <div class="text-gray-600">9:00 - 12:00 y de 15:00 - 19:00h</div>
+                                <div class="text-gray-600">9:00 - 12:00 y de 15:00 - 19:00 hs</div>
                             </div>
                             <div class="bg-white rounded-xl p-4">
                                 <div class="font-bold text-cyan-600">20 de Noviembre</div>
-                                <div class="text-gray-600">9:00 - 12:00 y de 14:00 - 18:00hs</div>
+                                <div class="text-gray-600">9:00 - 12:00 y de 14:00 - 18:00 hs</div>
                             </div>
                         </div>
                     </div>
@@ -740,30 +748,46 @@
 
     <!-- SCRIPTS -->
     <script>
-        // Countdown Timer
+        // Countdown Timer (sin días)
         const eventDate = new Date('2025-11-19T09:00:00').getTime();
-        
+
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = eventDate - now;
-            
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+            const totalHours = Math.floor(distance / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+
+            document.getElementById('hours').textContent = totalHours.toString().padStart(2, '0');
             document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
             document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-            
+
             if (distance < 0) {
                 document.getElementById('countdown').innerHTML = '<div class="text-3xl font-bold">¡La Expo ya comenzó!</div>';
             }
         }
-        
+
         updateCountdown();
         setInterval(updateCountdown, 1000);
+
+        // Efecto Parallax en la sección HERO
+        const parallaxSection = document.querySelector('[data-parallax]');
+        const parallaxBg = document.querySelector('.parallax-bg img');
+
+        if (parallaxSection && parallaxBg) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const sectionTop = parallaxSection.offsetTop;
+                const sectionHeight = parallaxSection.offsetHeight;
+
+                // Solo aplicar parallax cuando la sección está visible
+                if (scrolled < sectionTop + sectionHeight) {
+                    const yPos = -(scrolled - sectionTop) * 0.5;
+                    parallaxBg.style.transform = `translateY(${yPos}px)`;
+                }
+            });
+        }
         
         // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
