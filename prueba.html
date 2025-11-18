@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expo Técnica 2025 - Industrial N° 9</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        /* Patrones SVG de fondo */
+        .pattern-circuits {
+            background-color: #0d47a1;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .pattern-blueprint {
+            background-color: #00796b;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .pattern-basics {
+            background-color: #7c3aed;
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .gradient-acpi {
+            background: linear-gradient(135deg, #0d47a1 0%, #1976d2 50%, #42a5f5 100%);
+        }
+        
+        .gradient-mmo {
+            background: linear-gradient(135deg, #00796b 0%, #00897b 50%, #26a69a 100%);
+        }
+        
+        .gradient-basics {
+            background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #a78bfa 100%);
+        }
+        
+        .gradient-dual {
+            background: linear-gradient(135deg, #0d47a1 0%, #1976d2 25%, #00796b 75%, #26a69a 100%);
+        }
+        
+        .gradient-triple {
+            background: linear-gradient(135deg, #7c3aed 0%, #0d47a1 33%, #00796b 66%, #26a69a 100%);
+        }
+        
+        /* Animaciones */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(13, 71, 161, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(13, 71, 161, 0.8), 0 0 60px rgba(0, 121, 107, 0.5); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        
+        /* Tarjetas con efecto glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Badge de especialidad */
+        .badge-acpi {
+            background: linear-gradient(135deg, #0d47a1, #1976d2);
+            box-shadow: 0 4px 15px rgba(13, 71, 161, 0.3);
+        }
+        
+        .badge-mmo {
+            background: linear-gradient(135deg, #00796b, #26a69a);
+            box-shadow: 0 4px 15px rgba(0, 121, 107, 0.3);
+        }
+        
+        .badge-basics {
+            background: linear-gradient(135deg, #7c3aed, #a78bfa);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+        
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- HEADER FLOTANTE -->
+    <header class="fixed top-0 w-full z-50 transition-all duration-300" id="header">
+        <div class="glass-card shadow-lg">
+            <nav class="container mx-auto px-4 py-4">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <div class="h-14 w-14 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
+                            <span class="text-white font-bold text-2xl">E9</span>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-extrabold bg-gradient-to-r from-blue-900 to-teal-700 bg-clip-text text-transparent">Industrial N°9</h1>
+                            <p class="text-xs text-gray-600 font-semibold">El Calafate</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden md:flex space-x-6">
+                        <a href="#inicio" class="text-gray-700 hover:text-blue-900 font-semibold transition-colors">Inicio</a>
+                        <a href="#especialidades" class="text-gray-700 hover:text-blue-900 font-semibold transition-colors">Especialidades</a>
+                        <a href="#proyectos" class="text-gray-700 hover:text-blue-900 font-semibold transition-colors">Proyectos</a>
+                        <a href="#contacto" class="text-gray-700 hover:text-teal-700 font-semibold transition-colors">Contacto</a>
+                    </div>
+                    
+                    <button class="md:hidden text-gray-700" id="menuBtn">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTADOR REGRESIVO -->
+    <section class="py-12 bg-gradient-to-r from-purple-900 via-blue-900 to-teal-900 mt-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center text-white">
+                <h3 class="text-2xl md:text-3xl font-bold mb-6">La Expo Técnica comienza en:</h3>
+                <div id="countdown" class="flex flex-wrap justify-center gap-4 md:gap-8">
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 min-w-[100px] border border-white/20">
+                        <div id="days" class="text-4xl md:text-5xl font-bold mb-2">00</div>
+                        <div class="text-sm uppercase tracking-wider">Días</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 min-w-[100px] border border-white/20">
+                        <div id="hours" class="text-4xl md:text-5xl font-bold mb-2">00</div>
+                        <div class="text-sm uppercase tracking-wider">Horas</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 min-w-[100px] border border-white/20">
+                        <div id="minutes" class="text-4xl md:text-5xl font-bold mb-2">00</div>
+                        <div class="text-sm uppercase tracking-wider">Min</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 min-w-[100px] border border-white/20">
+                        <div id="seconds" class="text-4xl md:text-5xl font-bold mb-2">00</div>
+                        <div class="text-sm uppercase tracking-wider">Seg</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO -->
+    <section id="inicio" class="py-20 bg-gradient-to-br from-blue-50 via-white to-teal-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-4xl mx-auto reveal">
+                <h2 class="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-blue-900 via-purple-800 to-teal-700 bg-clip-text text-transparent leading-tight">
+                    Expo Técnica 2025
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed">
+                    Descubrí la innovación, creatividad y talento de nuestros estudiantes
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#especialidades" class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                        Explorá las Especialidades
+                    </a>
+                    <a href="#proyectos" class="bg-white text-blue-700 border-2 border-blue-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all duration-300">
+                        Ver Proyectos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+        <!-- INFORMACIÓN -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-900">Información Útil</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Fechas -->
+                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 reveal">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-blue-600 rounded-xl p-3">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">Fechas</h3>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="bg-white rounded-xl p-4">
+                                <div class="font-bold text-blue-600">19 de Noviembre</div>
+                                <div class="text-gray-600">9:00 - 12:00 y de 15:00 - 19:00h</div>
+                            </div>
+                            <div class="bg-white rounded-xl p-4">
+                                <div class="font-bold text-cyan-600">20 de Noviembre</div>
+                                <div class="text-gray-600">9:00 - 12:00 y de 14:00 - 18:00hs</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ubicación -->
+                    <div class="bg-gradient-to-br from-teal-50 to-green-50 rounded-2xl p-8 reveal">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="bg-teal-600 rounded-xl p-3">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900">Ubicación</h3>
+                        </div>
+                        <div class="space-y-2 text-gray-700">
+                            <p class="font-bold text-lg">Escuela Industrial N°9</p>
+                            <p>Pioneros 1222</p>
+                            <p>El Calafate, Santa Cruz</p>
+                            <p>Argentina</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESPECIALIDADES -->
+    <section id="especialidades" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-900">Nuestras Especialidades</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Dos caminos de formación técnica que preparan a los profesionales del futuro
+                </p>
+            </div>
+
+            <!-- CICLO BÁSICO -->
+            <div id="basico-section" class="mb-20 reveal" data-specialty="basico">
+                <div class="pattern-basics rounded-3xl overflow-hidden shadow-2xl">
+                    <div class="p-8 md:p-12">
+                        <div class="flex flex-col lg:flex-row items-center gap-8">
+                            <div class="lg:w-1/3 text-center lg:text-left">
+                                <div class="inline-block badge-basics text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
+                                    EL COMIENZO
+                                </div>
+                                <h3 class="text-4xl md:text-5xl font-black text-white mb-4">Ciclo Básico</h3>
+                                <p class="text-xl text-white/90 mb-6">
+                                    Acá empieza tu camino técnico. Explorás diferentes disciplinas y descubrís tus intereses.
+                                </p>
+                            </div>
+                            <div class="lg:w-2/3">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                                        <div class="flex items-center gap-3 text-white">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="font-semibold">Fundamentos técnicos</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                                        <div class="flex items-center gap-3 text-white">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="font-semibold">Matemática y física aplicada</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                                        <div class="flex items-center gap-3 text-white">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="font-semibold">Introducción al taller</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                                        <div class="flex items-center gap-3 text-white">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="font-semibold">Diseño técnico</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACPI -->
+            <div id="acpi-section" class="mb-20 reveal" data-specialty="acpi">
+                <div class="pattern-circuits rounded-3xl overflow-hidden shadow-2xl">
+                    <div class="p-8 md:p-12">
+                        <div class="flex flex-col lg:flex-row items-center gap-8">
+                            <div class="lg:w-1/3 text-center lg:text-left">
+                                <div class="inline-block badge-acpi text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
+                                    ESPECIALIZACIÓN
+                                </div>
+                                <h3 class="text-4xl md:text-5xl font-black text-white mb-4">Automatización y Control de Procesos Industriales</h3>
+                                <p class="text-xl text-white/90 mb-6">
+                                    Especialistas en automatización, programación industrial y control de procesos. Creando soluciones para la industria 4.0
+                                </p>
+                            </div>
+                            <div class="lg:w-2/3">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                                        <div class="flex items-center gap-3 text-white">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="font-semibold">Electricidad y Automatización</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                                        <div class="flex items-center gap-3 text-white">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="font-semibold">Programación Industrial</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                                        <div class="flex items-center gap-3 text-white">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="font-semibold">Control de Procesos y PLC</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                                        <div class="flex items-center gap-3 text-white">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="font-semibold">Internet de las Cosas (IoT)</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                                        <div class="flex items-center gap-3 text-white">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="font-semibold">Inteligencia Artificial</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MMO -->
+            <div id="mmo-section" class="reveal" data-specialty="mmo">
+                <div class="pattern-blueprint rounded-3xl overflow-hidden shadow-2xl">
+                    <div class="p-8 md:p-12">
+                        <div class="flex flex-col lg:flex-row items-center gap-8">
+                            <div class="lg:w-1/3 text-center lg:text-left">
+                                <div class="inline-block badge-mmo text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
+                                    ESPECIALIZACIÓN
+                                </div>
+                                <h3 class="text-4xl md:text-5xl font-black text-white mb-4">Maestro Mayor de Obras</h3>
+                                <p class="text-xl text-white/90 mb-6">
+                                    Profesionales en construcción, diseño y gestión de obras. Construyendo los espacios del mañana
+                                </p>
+                            </div>
+                            <div class="lg:w-2/3">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                                        <div class="flex items-center gap-3 text-white">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="font-semibold">Diseño Arquitectónico</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                                        <div class="flex items-center gap-3 text-white">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="font-semibold">Construcción Sustentable</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                                        <div class="flex items-center gap-3 text-white">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="font-semibold">Gestión de Proyectos</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                                        <div class="flex items-center gap-3 text-white">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="font-semibold">Modelado 3D y BIM</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                                        <div class="flex items-center gap-3 text-white">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="font-semibold">Cálculo de Estructuras</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- PROYECTOS SIMPLIFICADOS -->
+<section id="proyectos" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12 reveal">
+            <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-900">Proyectos de la Expo</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                Explorá los trabajos que los estudiantes de todos los años presentarán en la feria
+            </p>
+        </div>
+
+        <!-- Ciclo Básico (1° a 3°) -->
+        <div class="mb-16 reveal">
+            <div class="bg-gradient-to-r from-purple-600 to-purple-800 rounded-3xl overflow-hidden shadow-2xl">
+                <div class="p-8 md:p-12">
+                    <div class="flex flex-col lg:flex-row items-center gap-8">
+                        <div class="lg:w-1/2">
+                            <div class="inline-block badge-basics text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
+                                CICLO BÁSICO
+                            </div>
+                            <h3 class="text-4xl md:text-5xl font-black text-white mb-4">1° a 2° Año</h3>
+                            <p class="text-xl text-white/90 mb-6 leading-relaxed">
+                                Los estudiantes del ciclo básico presentan proyectos que conectan con problemáticas ambientales y sociales de nuestra región, con especial énfasis en la gestión sostenible del agua del Lago Argentino.
+                            </p>
+                        </div>
+                        <div class="lg:w-1/2">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                                <h4 class="text-white font-bold text-lg mb-4">Temáticas y Aprendizajes:</h4>
+                                <ul class="space-y-3 text-white/90">
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>Conciencia ambiental y recursos hídricos</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>Fundamentos técnicos y científicos</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>Introducción al diseño y taller</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>Historia y derechos humanos</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACPI 4° y 6° -->
+        <div class="mb-16 reveal">
+            <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-3xl overflow-hidden shadow-2xl pattern-circuits">
+                <div class="p-8 md:p-12">
+                    <div class="flex flex-col lg:flex-row items-center gap-8">
+                        <div class="lg:w-1/2">
+                            <div class="inline-block badge-acpi text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
+                                AUTOMATIZACIÓN Y CONTROL
+                            </div>
+                            <h3 class="text-4xl md:text-5xl font-black text-white mb-4">ACPI - 3° y 6° Año</h3>
+                            <p class="text-xl text-white/90 mb-6 leading-relaxed">
+                                Proyectos de automatización, programación y control industrial. Los estudiantes aplican tecnologías como Arduino, IoT, sistemas SCADA y desarrollo web para crear soluciones técnicas innovadoras.
+                            </p>
+                        </div>
+                        <div class="lg:w-1/2">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                                <h4 class="text-white font-bold text-lg mb-4">Tecnologías Aplicadas:</h4>
+                                <ul class="space-y-3 text-white/90">
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>Arduino y sistemas embebidos</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>Programación en Python y C++</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>Desarrollo web (HTML, CSS, JavaScript)</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>Códigos QR, Morse y reconocimiento de patrones</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>Sistemas SCADA y control de procesos</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MMO 4° y 6° -->
+        <div class="reveal">
+            <div class="bg-gradient-to-r from-teal-600 to-teal-800 rounded-3xl overflow-hidden shadow-2xl pattern-blueprint">
+                <div class="p-8 md:p-12">
+                    <div class="flex flex-col lg:flex-row items-center gap-8">
+                        <div class="lg:w-1/2">
+                            <div class="inline-block badge-mmo text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
+                                MAESTRO MAYOR DE OBRAS
+                            </div>
+                            <h3 class="text-4xl md:text-5xl font-black text-white mb-4">MMO - 3° y 6° Año</h3>
+                            <p class="text-xl text-white/90 mb-6 leading-relaxed">
+                                Proyectos de diseño arquitectónico, construcción sustentable y gestión de obras. Los estudiantes presentan maquetas, planos y soluciones constructivas innovadoras.
+                            </p>
+                        </div>
+                        <div class="lg:w-1/2">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                                <h4 class="text-white font-bold text-lg mb-4">Áreas de Trabajo:</h4>
+                                <ul class="space-y-3 text-white/90">
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>Diseño arquitectónico y planos técnicos</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>Construcción sustentable y ecológica</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>Maquetas y modelado 3D</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>Cálculo de estructuras</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <svg class="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span>Gestión y dirección de obras</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Final -->
+        <div class="text-center mt-16 reveal">
+            <div class="bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 rounded-2xl p-8 text-white">
+                <h3 class="text-3xl font-bold mb-4">¡Te esperamos en la Expo!</h3>
+                <p class="text-xl mb-6">Vení a conocer todos los proyectos y charlá con los estudiantes sobre sus trabajos</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <div class="bg-white/20 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/30">
+                        <div class="font-bold">19 de Noviembre</div>
+                        <div class="text-sm opacity-90">9:00-12:00 y 15:00-19:00</div>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/30">
+                        <div class="font-bold">20 de Noviembre</div>
+                        <div class="text-sm opacity-90">9:00-12:00 y 14:00-18:00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-20 bg-gradient-to-br from-blue-900 via-purple-900 to-teal-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <h2 class="text-4xl md:text-5xl font-black mb-6">¿Tenés Preguntas?</h2>
+                <p class="text-xl mb-12 opacity-90">Estamos acá para ayudarte</p>
+                
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+                        <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <h3 class="font-bold mb-2">Email</h3>
+                        <p class="text-sm opacity-90">industrialnueve@yahoo.com.ar</p>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+                        <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                        <h3 class="font-bold mb-2">Teléfono</h3>
+                        <p class="text-sm opacity-90">02902 490-690</p>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
+                        <svg class="w-12 h-12 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                        <h3 class="font-bold mb-2">Instagram</h3>
+                        <p class="text-sm opacity-90"><a href="https://www.instagram.com/escuela.industrial.n9/">escuela.industrial.n9</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 Escuela Industrial N°9 "15 de Noviembre" - El Calafate, Santa Cruz</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Countdown Timer
+        const eventDate = new Date('2025-11-19T09:00:00').getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<div class="text-3xl font-bold">¡La Expo ya comenzó!</div>';
+            }
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Header con fondo al hacer scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('shadow-xl');
+            } else {
+                header.classList.remove('shadow-xl');
+            }
+        });
+        
+        // Reveal on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+        
+        // Filtro de proyectos
+        function filterProjects(filter) {
+            const projectCards = document.querySelectorAll('[data-specialty]');
+            
+            projectCards.forEach(card => {
+                const specialty = card.getAttribute('data-specialty');
+                
+                if (filter === 'all' || specialty === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Actualizar botones activos
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('ring-4', 'ring-gray-300', 'ring-opacity-50');
+            });
+            event.target.classList.add('ring-4', 'ring-gray-300', 'ring-opacity-50');
+        }
+        
+        // Menu mobile toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'md:hidden absolute top-full left-0 right-0 bg-white shadow-xl rounded-b-2xl overflow-hidden';
+        mobileMenu.style.display = 'none';
+        mobileMenu.innerHTML = `
+            <div class="flex flex-col p-4 space-y-3">
+                <a href="#inicio" class="text-gray-700 hover:text-blue-900 font-semibold py-2 px-4 hover:bg-gray-50 rounded-lg transition-colors">Inicio</a>
+                <a href="#especialidades" class="text-gray-700 hover:text-blue-900 font-semibold py-2 px-4 hover:bg-gray-50 rounded-lg transition-colors">Especialidades</a>
+                <a href="#proyectos" class="text-gray-700 hover:text-blue-900 font-semibold py-2 px-4 hover:bg-gray-50 rounded-lg transition-colors">Proyectos</a>
+                <a href="#contacto" class="text-gray-700 hover:text-teal-700 font-semibold py-2 px-4 hover:bg-gray-50 rounded-lg transition-colors">Contacto</a>
+            </div>
+        `;
+        
+        if (menuBtn) {
+            menuBtn.parentElement.parentElement.appendChild(mobileMenu);
+            menuBtn.addEventListener('click', () => {
+                if (mobileMenu.style.display === 'none') {
+                    mobileMenu.style.display = 'block';
+                } else {
+                    mobileMenu.style.display = 'none';
+                }
+            });
+            
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.style.display = 'none';
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>

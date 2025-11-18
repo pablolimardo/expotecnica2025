@@ -1,0 +1,136 @@
+   FILTROS DE PROYECTOS
+    <section id="proyectos" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-gray-900">Proyectos Destacados</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                    Descubrí los trabajos que nuestros estudiantes presentarán en la Expo
+                </p>
+                
+                <!-- Botones de filtro -->
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="filterProjects('all')" class="filter-btn px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-all shadow-lg ring-4 ring-gray-300 ring-opacity-50">
+                        Todos
+                    </button>
+                    <button onclick="filterProjects('basico')" class="filter-btn px-6 py-3 gradient-basics text-white rounded-xl font-semibold hover:opacity-90 transition-all shadow-lg">
+                        Ciclo Básico
+                    </button>
+                    <button onclick="filterProjects('acpi')" class="filter-btn px-6 py-3 gradient-acpi text-white rounded-xl font-semibold hover:opacity-90 transition-all shadow-lg">
+                        ACPI
+                    </button>
+                    <button onclick="filterProjects('mmo')" class="filter-btn px-6 py-3 gradient-mmo text-white rounded-xl font-semibold hover:opacity-90 transition-all shadow-lg">
+                        MMO
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grid de proyectos de ejemplo -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+                <!-- Proyecto Básico 1 -->
+                <div data-specialty="basico" class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                    <div class="h-48 gradient-basics"></div>
+                    <div class="p-6">
+                        <div class="badge-basics text-white px-4 py-1 rounded-full text-xs font-bold inline-block mb-3">
+                            CICLO BÁSICO
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Gotas de conciencia</h3>
+                        <p class="text-gray-600 mb-4">FALTA DESCRIPCION</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full">1º 3º</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyecto Básico 2 -->
+                <div data-specialty="basico" class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                    <div class="h-48 gradient-basics"></div>
+                    <div class="p-6">
+                        <div class="badge-basics text-white px-4 py-1 rounded-full text-xs font-bold inline-block mb-3">
+                            CICLO BÁSICO
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Caminantes del Humedal</h3>
+                        <p class="text-gray-600 mb-4">FALTA DESCRIPCION</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full">2° 2°</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyecto Básico 3   -->
+                <div data-specialty="basico" class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                    <div class="h-48 gradient-basics"></div>
+                    <div class="p-6">
+                        <div class="badge-basics text-white px-4 py-1 rounded-full text-xs font-bold inline-block mb-3">
+                            CICLO BÁSICO
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Mi Huellas por Segundo Año</h3>
+                        <p class="text-gray-600 mb-4">Los alumnos de 2° 2° exhibirán sus trabajos de todo el año y explicarán sobre sus experiencias de su trayectoria de enseñanza y aprendizaje de segundo año.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full">2° 2°</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                                <!-- Proyecto Básico 3   -->
+                <div data-specialty="basico" class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                    <div class="h-48 gradient-basics"></div>
+                    <div class="p-6">
+                        <div class="badge-basics text-white px-4 py-1 rounded-full text-xs font-bold inline-block mb-3">
+                            CICLO BÁSICO
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Historia de los derechos humanos: un largo caminode avances y retrocesos</h3>
+                        <p class="text-gray-600 mb-4">FALTA DESCRIPCION</p> 
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full">3° 1°</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                                                <!-- Proyecto Básico 3   -->
+                <div data-specialty="basico" class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                    <div class="h-48 gradient-basics"></div>
+                    <div class="p-6">
+                        <div class="badge-basics text-white px-4 py-1 rounded-full text-xs font-bold inline-block mb-3">
+                            CICLO BÁSICO
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">El museo del agua</h3>
+                        <p class="text-gray-600 mb-4">FALTA DESCRIPCION</p> 
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full">3° 2°</span>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyecto ACPI 1 -->
+                <div data-specialty="acpi" class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                    <div class="h-48 gradient-acpi"></div>
+                    <div class="p-6">
+                        <div class="badge-acpi text-white px-4 py-1 rounded-full text-xs font-bold inline-block mb-3">
+                            ACPI
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">El museo del agua</h3>
+                        <p class="text-gray-600 mb-4">FALTA DESCRIPCION</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full">3° 2°</span>
+                          
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto MMO 1 -->
+                <div data-specialty="mmo" class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                    <div class="h-48 gradient-mmo"></div>
+                    <div class="p-6">
+                        <div class="badge-mmo text-white px-4 py-1 rounded-full text-xs font-bold inline-block mb-3">
+                            MMO
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Vivienda Sustentable</h3>
+                        <p class="text-gray-600 mb-4">Diseño ecológico con materiales reciclados</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs px-3 py-1 bg-teal-100 text-teal-700 rounded-full">AutoCAD</span>
+                            <span class="text-xs px-3 py-1 bg-teal-100 text-teal-700 rounded-full">Maqueta</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
